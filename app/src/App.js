@@ -6,10 +6,13 @@ import {useState} from 'reinspect';
 
 
 const App = () => {
-
-
-    const [testArrLength, settestArrLength] = useState( 10, 'TestArrayLength');
+    const [testArrLength, setTestArrLength] = useState( 0, 'TestArrayLength');
     const [testArr, setTestArr] = useState([], 'Test Array');
+
+    const handleInput = e => {
+        const {value} = e.target;
+        setTestArrLength(Number(value));    
+    }
 
     const makeRandArr = () => {
         const arr = [];
@@ -19,19 +22,23 @@ const App = () => {
         }
         console.log(arr);
         setTestArr(arr);
+        setTestArrLength(0);
     }
 
     return (
         <Segment>
             <Label> Algorithms </Label>
-            <Segment>
+            <Form>
                 <Label> Enter length of random array </Label>
-                <Input></Input>
-                <Segment>
-                    <Button onClick = {makeRandArr}> Create random numbers </Button>
-                </Segment>
+                <Input
+                    placeholder = {!testArrLength ? 'enter a length' : ''}
+                    onChange = {handleInput}
+                />
+            </Form>
+                
+            <Segment>
+                <Button onClick = {makeRandArr}> Create random numbers </Button>
             </Segment>
-            
         
             <Segment style = {{width: '50%', margin: '0 auto'}}>
             <Table>
