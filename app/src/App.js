@@ -2,6 +2,8 @@ import React from 'react';
 import {Button, Dropdown, Form, Input, Label, Modal, Segment, Table} from 'semantic-ui-react';
 import {useState} from 'reinspect';
 
+import TableSmall from './comp/TableSmall';
+
 // const testArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
 
@@ -41,24 +43,16 @@ const App = () => {
             </Segment>
         
             <Segment style = {{width: '50%', margin: '0 auto'}}>
-            <Table>
-                <Table.Body>
-                    <Table.Row>
-                        {testArr.map((item, index) => (
+                {testArr.length <= 15 
+                    ?
+                        <TableSmall testArr = {testArr}/>
+                    :
+                        <Segment>
+                            <Label> Too Big </Label>
+                        </Segment>    
 
-                            <Table.Cell 
-                                key = {index}
-                                style = {{border: '1px solid pink'}}
-                                // collapsing 
-                                // width = {1}
-                                textAlign = 'center'
-                            >  
-                            {item}</Table.Cell>
-                            ))}
-                    </Table.Row>
-                </Table.Body>
-            </Table>
 
+                }
             </Segment>    
 
         </Segment>
