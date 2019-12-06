@@ -3,6 +3,7 @@ import {Button, Dropdown, Form, Input, Label, Modal, Segment, Table} from 'seman
 import {useState} from 'reinspect';
 
 import TableSmall from './comp/TableSmall';
+import LargeTable from './comp/LargeTable';
 
 // const testArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 
@@ -47,9 +48,7 @@ const App = () => {
                     ?
                         <TableSmall testArr = {testArr}/>
                     :
-                        <Segment>
-                            <Label> Too Big </Label>
-                        </Segment>    
+                        <LargeTable testArr = {testArr}/>   
 
 
                 }
