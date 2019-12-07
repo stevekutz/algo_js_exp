@@ -7,16 +7,23 @@ import LargeTable from './comp/LargeTable';
 
 // const testArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 const dropDownTypes = [
-    { key: 1, text: 'Merge Sort', value: 'Merge Sort', desription: 'sfsdfsdfsdfdsf'},
-    { key: 2, text: 'Bubble Sort', value: 'Bubble Sort', desription: 'cvcbbncvbncvbn'},
-    { key: 3, text: 'Insertion Sort', value: 'Insertion Sort', desription: 'ipoippopjpopmmo'},
-    { key: 4, text: 'Count Sort', value: 'Count Sort', desription: 'mnnmmnmnbmnmnj'},
+    { key: 0, text: 'Merge Sort', value: 'Merge Sort'},
+    { key: 1, text: 'Bubble Sort', value: 'Bubble Sort'},
+    { key: 2, text: 'Insertion Sort', value: 'Insertion Sort'},
+    { key: 3, text: 'Count Sort', value: 'Count Sort'},
+]
+
+const algoInfo = [
+    {description: 'Merge Sort info'},
+    {description: 'Bubble Sort info'},
+    {description: 'Insertion Sort info'},
+    {description: 'Count Sort info'},
 ]
 
 const App = () => {
     const [testArrLength, setTestArrLength] = useState( 0, 'TestArrayLength');
     const [testArr, setTestArr] = useState([], 'Test Array');
-    const [algoChoice, setAlgoChoice] = useState('', 'Algo Choice')
+    const [algoChoiceIndex, setAlgoChoiceIndex] = useState('', 'Algo Choice')
 
     const handleInput = e => {
         const {value} = e.target;
@@ -35,10 +42,17 @@ const App = () => {
         setTestArrLength(0);
     }
 
-    const handleDropDown = (e, {value}, selection) => {
-       console.log('selection is ', selection);
-        setAlgoChoice(value)
-        console.log('Algo Chosen ', algoChoice);
+    // const handleDropDown = (e, {value}, data) => {
+    const handleDropDown = (e, data) => {
+        const {value} = data;
+        const {description} = data.options.find(choice => choice.value === value)
+        const { key } = data.options.find(o => o.value === value);
+        console.log('key is ', key);
+        console.log('description ', description);
+       // console.log('selection is ', selection);
+        // setAlgoChoice(value)
+        setAlgoChoiceIndex(key);
+
     }
 
     return (
@@ -61,17 +75,22 @@ const App = () => {
                         <Dropdown 
                             placeholder = 'select algorithm'
                             options = {dropDownTypes}
-                            value = {algoChoice}
+                            // value = {algoChoiceIndex}
                             onChange = {handleDropDown}
-                            
-                            
+                            selection
+                            // description = {dropDownTypes.description}
                             
                         />    
                     </Segment>
                     <Segment vertical attached>
-                        <Container> Algorithm Chosen: </Container>
-                        <Label>{algoChoice}</Label>
-                    </Segment>
+                        <Container> Description: </Container>
+                        {algoChoiceIndex !== ''
+                            ? 
+                            <Label>{algoInfo[algoChoiceIndex].description}</Label>
+                            : null
+                        }    
+                        
+                        </Segment>
                 </Segment.Group>
         {/*    </Segment>    */}
         
