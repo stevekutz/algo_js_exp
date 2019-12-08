@@ -1,6 +1,8 @@
 import React from 'react';
 import {Button, Card, Dropdown, Form, Input, Label, Modal, List, Table} from 'semantic-ui-react';
 
+
+// ADDED THIS COMMENT 
 const algoInfo = [
     {description: 'Merge Sort info', worstcase: 'o'},
     {description: 'Bubble Sort info', worstcase: 'o'},
