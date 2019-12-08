@@ -4,20 +4,21 @@ import {useState} from 'reinspect';
 
 import TableSmall from './comp/TableSmall';
 import LargeTable from './comp/LargeTable';
+import AlgoInfo from './comp/AlgoInfo';
 
 // const testArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 const dropDownTypes = [
-    { key: 0, text: 'Merge Sort', value: 'Merge Sort'},
-    { key: 1, text: 'Bubble Sort', value: 'Bubble Sort'},
-    { key: 2, text: 'Insertion Sort', value: 'Insertion Sort'},
-    { key: 3, text: 'Count Sort', value: 'Count Sort'},
+    { key: 0, text: 'Merge Sort', value: 'Merge Sort', algoinfo: 'Merge Sort info'},
+    { key: 1, text: 'Bubble Sort', value: 'Bubble Sort', algoinfo: 'Bubble Sort info'},
+    { key: 2, text: 'Insertion Sort', value: 'Insertion Sort', algoinfo: 'Insertion Sort info'},
+    { key: 3, text: 'Count Sort', value: 'Count Sort', algoinfo: 'Count Sort info'},
 ]
 
 const algoInfo = [
-    {description: 'Merge Sort info'},
-    {description: 'Bubble Sort info'},
-    {description: 'Insertion Sort info'},
-    {description: 'Count Sort info'},
+    {description: 'Merge Sort info', worstcase: 'o'},
+    {description: 'Bubble Sort info', worstcase: 'o'},
+    {description: 'Insertion Sort info', worstcase: 'o'},
+    {description: 'Count Sort info', worstcase: 'o'},
 ]
 
 const App = () => {
@@ -45,12 +46,12 @@ const App = () => {
     // const handleDropDown = (e, {value}, data) => {
     const handleDropDown = (e, data) => {
         const {value} = data;
-        const {description} = data.options.find(choice => choice.value === value)
+        const {algoinfo} = data.options.find(choice => choice.value === value)
         const { key } = data.options.find(o => o.value === value);
+
         console.log('key is ', key);
-        console.log('description ', description);
-       // console.log('selection is ', selection);
-        // setAlgoChoice(value)
+        console.log('algoinfo ', algoinfo);
+
         setAlgoChoiceIndex(key);
 
     }
@@ -66,7 +67,6 @@ const App = () => {
                 />
             </Form>
                 
-        {/*    <Segment>   */}
                 <Segment.Group horizontal>
                     <Segment attached>
                         <Button onClick = {makeRandArr}> Create random numbers </Button>                
@@ -75,24 +75,24 @@ const App = () => {
                         <Dropdown 
                             placeholder = 'select algorithm'
                             options = {dropDownTypes}
-                            // value = {algoChoiceIndex}
                             onChange = {handleDropDown}
                             selection
-                            // description = {dropDownTypes.description}
-                            
+ 
                         />    
                     </Segment>
                     <Segment vertical attached>
                         <Container> Description: </Container>
                         {algoChoiceIndex !== ''
                             ? 
-                            <Label>{algoInfo[algoChoiceIndex].description}</Label>
+                        //    <AlgoInfo index = {algoChoiceIndex}/>    
+                           <Label>{algoInfo[algoChoiceIndex].description}</Label>
+                            
                             : null
                         }    
                         
                         </Segment>
                 </Segment.Group>
-        {/*    </Segment>    */}
+    
         
             <Segment style = {{width: '80%', margin: '0 auto'}}>
                 {testArr.length <= 10 
