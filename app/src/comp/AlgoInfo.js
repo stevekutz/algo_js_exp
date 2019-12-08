@@ -1,33 +1,22 @@
 import React from 'react';
-import {Button, Card, Dropdown, Form, Input, Label, Modal, List, Table} from 'semantic-ui-react';
+import {Button, Card, Dropdown, Form, Input, Label, Modal, List, Segment, Table} from 'semantic-ui-react';
+import algoInfo from '../data/data';
 
-
-// ADDED THIS COMMENT 
-const algoInfo = [
-    {description: 'Merge Sort info', worstcase: 'o'},
-    {description: 'Bubble Sort info', worstcase: 'o'},
-    {description: 'Insertion Sort info', worstcase: 'o'},
-    {description: 'Count Sort info', worstcase: 'o'},
-]
-
-//const LargeTable = ({testArr}) => {
 const AlgoInfo = (index) => {
-    console.log('key passed in is ', index);
-
+    console.log('key passed in is ', index.index);
+    let id = index.index;
     return (
-        <Card.Group>
-               
-            <Card.Content>
-                <Label>{algoInfo[`${index}`]}</Label>
-            
-            </Card.Content>
-            
-        </Card.Group>
-
+        <Segment>
+            <Card.Group>
+                <Card.Content>  
+                    <Card.Description> Description: {algoInfo[id].description}  </Card.Description>
+                    <Card.Description> Worst Case: {algoInfo[id].worstcase}  </Card.Description>
+                    <Card.Description> Best Case: {algoInfo[id].bestcase}  </Card.Description>
+                </Card.Content>            
+            </Card.Group>        
+        </Segment>
     )
 
 }
 
 export default AlgoInfo;
-
-// <Label>{algoInfo[key].description}</Label>

@@ -1,4 +1,8 @@
 ### Configuration details
+// updated serialize-javascript
+
+// some changes here
+
 1) ### Set up React app `yarn create react-app app`
 
 2) ### Add Dependencies  (several added for future styling)

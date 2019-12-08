@@ -81,16 +81,15 @@ const App = () => {
                         />    
                     </Segment>
                     <Segment vertical attached>
-                        <Container> Description: </Container>
                         {algoChoiceIndex !== ''
                             ? 
-                        //    <AlgoInfo index = {algoChoiceIndex}/>    
-                           <Label>{algoInfo[algoChoiceIndex].description}</Label>
+                            <AlgoInfo index = {algoChoiceIndex}/>    
+                        //   <Label>{algoInfo[algoChoiceIndex].description}</Label>
                             
                             : null
                         }    
                         
-                        </Segment>
+                    </Segment>
                 </Segment.Group>
     
         
