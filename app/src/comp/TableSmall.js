@@ -11,8 +11,6 @@ const TableSmall = ({testArr}) => {
                     <Table.Cell 
                         key = {index}
                         style = {{border: '1px solid pink'}}
-                        // collapsing 
-                        // width = {1}
                         textAlign = 'center'
                     >  
                     {item}</Table.Cell>
