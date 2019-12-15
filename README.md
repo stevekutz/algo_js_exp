@@ -1,4 +1,4 @@
-### Configuration details
+
 // updated serialize-javascript
 
 // some changes here

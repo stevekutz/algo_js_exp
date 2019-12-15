@@ -2,6 +2,8 @@ import React from 'react';
 import {Button, Card, Dropdown, Form, Input, Label, Modal, List, Table} from 'semantic-ui-react';
 
 const LargeTable = ({testArr}) => {
+    console.log('testArr ==>', {testArr});
+
     return (
         <List horizontal celled relaxed >
                

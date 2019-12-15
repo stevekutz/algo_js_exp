@@ -5,6 +5,8 @@ import {useState} from 'reinspect';
 import TableSmall from './comp/TableSmall';
 import LargeTable from './comp/LargeTable';
 import AlgoInfo from './comp/AlgoInfo';
+import ChartDataSet from './comp/ChartDataSet';
+import MyChart from './comp/MyChart';
 
 // const testArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 const dropDownTypes = [
@@ -98,12 +100,13 @@ const App = () => {
                     ?
                         <TableSmall testArr = {testArr}/>
                     :
-                        <LargeTable testArr = {testArr}/>   
+                    //   {/* <LargeTable testArr = {testArr}/>  */}
+                        <ChartDataSet testArr = {testArr}/> 
 
 
                 }
             </Segment>    
-
+            <MyChart />    
         </Segment>
     );
 }
