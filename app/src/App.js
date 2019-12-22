@@ -37,14 +37,18 @@ const App = () => {
         setTestArrLength(Number(value));    
     }
 
-    const makeRandArr = () => {
-        const arr = [];
+    const makeChartData = () => {
+        let arr = [];
         let labelArr = []
         
-        for(let i = 0; i < testArrLength; i++){
-            arr.push(Math.floor((Math.random() * testArrLength) + 1))
-            labelArr.push(i.toString())
-        }
+        while (!arr.includes(0) || !arr.includes(testArrLength)){
+            arr = [];
+            labelArr = [];
+            for(let i = 0; i < testArrLength; i++){
+                arr.push(Math.floor(Math.random() * (testArrLength + 1) + 0))
+                labelArr.push(i.toString())
+            }
+        }   
         console.log(arr);
         setTestArr(arr);
         setLabels(labelArr)
@@ -78,7 +82,7 @@ const App = () => {
                 
                 <Segment.Group horizontal>
                     <Segment attached>
-                        <Button onClick = {makeRandArr}> Create random numbers </Button>                
+                        <Button onClick = {makeChartData}> Create random numbers </Button>                
                     </Segment>
                     <Segment attached>
                         <Dropdown 
@@ -92,10 +96,8 @@ const App = () => {
                     <Segment vertical attached>
                         {algoChoiceIndex !== ''
                             ? 
-                            <AlgoInfo index = {algoChoiceIndex}/>    
-                        //   <Label>{algoInfo[algoChoiceIndex].description}</Label>
-                            
-                            : null
+                                <AlgoInfo index = {algoChoiceIndex}/>                                
+                            :   null
                         }    
                         
                     </Segment>
@@ -103,18 +105,15 @@ const App = () => {
     
         
             <Segment style = {{width: '80%', margin: '0 auto'}}>
-                {testArr.length <= 10 
+                {testArr.length <= 1 
                     ?
-                        <TableSmall testArr = {testArr}/>
+                        <Label> Enter array length of 2 or more </Label>
                     :
                         <BarChart 
                             title = {algoName !== '' ? algoName : 'data'}
                             labels = {labels} 
                             values = {testArr}
                         />
-                    //    <LargeTable testArr = {testArr}/>
-                    //     <ChartDataSet testArr = {testArr}/> 
-
 
                 }
             </Segment>    
