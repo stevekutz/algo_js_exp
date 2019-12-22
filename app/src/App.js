@@ -27,6 +27,7 @@ const App = () => {
     const [testArrLength, setTestArrLength] = useState( 0, 'TestArrayLength');
     const [testArr, setTestArr] = useState([], 'Test Array');
     const [algoChoiceIndex, setAlgoChoiceIndex] = useState('', 'Algo Choice')
+    const [labels, setLabels] = useState([], 'Labels')
 
     const handleInput = e => {
         const {value} = e.target;
@@ -36,14 +37,32 @@ const App = () => {
 
     const makeRandArr = () => {
         const arr = [];
+        let labelArr = []
         
         for(let i = 0; i < testArrLength; i++){
             arr.push(Math.floor((Math.random() * testArrLength) + 1))
+            labelArr.push(i.toString())
         }
         console.log(arr);
         setTestArr(arr);
+        setLabels(labelArr)
         setTestArrLength(0);
+       // generateLabels()
+
+        // let labelArr = []
+        // for(let i = 1; i < testArr.length; i++)
+        //     labelArr.push(i)
+
+        // setLabels(labelArr);  
     }
+
+    // const generateLabels = () => {
+    //     let labelArr = []
+    //     for(let i = 1; i < testArr.length; i++)
+    //         labelArr.push(i)
+
+    //     setLabels(labelArr);    
+    // }
 
     // const handleDropDown = (e, {value}, data) => {
     const handleDropDown = (e, data) => {
@@ -100,8 +119,8 @@ const App = () => {
                     ?
                         <TableSmall testArr = {testArr}/>
                     :
-                    //   {/* <LargeTable testArr = {testArr}/>  */}
-                        <ChartDataSet testArr = {testArr}/> 
+                        <LargeTable testArr = {testArr}/>
+                    //     <ChartDataSet testArr = {testArr}/> 
 
 
                 }
