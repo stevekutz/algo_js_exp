@@ -7,6 +7,7 @@ import LargeTable from './comp/LargeTable';
 import AlgoInfo from './comp/AlgoInfo';
 import ChartDataSet from './comp/ChartDataSet';
 import MyChart from './comp/MyChart';
+import BarChart from './comp/BarChart';
 
 // const testArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 const dropDownTypes = [
@@ -27,6 +28,7 @@ const App = () => {
     const [testArrLength, setTestArrLength] = useState( 0, 'TestArrayLength');
     const [testArr, setTestArr] = useState([], 'Test Array');
     const [algoChoiceIndex, setAlgoChoiceIndex] = useState('', 'Algo Choice')
+    const [algoName, setAlgoName] = useState('', 'Algo Name');
     const [labels, setLabels] = useState([], 'Labels')
 
     const handleInput = e => {
@@ -46,23 +48,9 @@ const App = () => {
         console.log(arr);
         setTestArr(arr);
         setLabels(labelArr)
-        setTestArrLength(0);
-       // generateLabels()
+    //    setTestArrLength(0);
 
-        // let labelArr = []
-        // for(let i = 1; i < testArr.length; i++)
-        //     labelArr.push(i)
-
-        // setLabels(labelArr);  
     }
-
-    // const generateLabels = () => {
-    //     let labelArr = []
-    //     for(let i = 1; i < testArr.length; i++)
-    //         labelArr.push(i)
-
-    //     setLabels(labelArr);    
-    // }
 
     // const handleDropDown = (e, {value}, data) => {
     const handleDropDown = (e, data) => {
@@ -74,7 +62,7 @@ const App = () => {
         console.log('algoinfo ', algoinfo);
 
         setAlgoChoiceIndex(key);
-
+        setAlgoName(dropDownTypes[key].text);
     }
 
     return (
@@ -119,13 +107,18 @@ const App = () => {
                     ?
                         <TableSmall testArr = {testArr}/>
                     :
-                        <LargeTable testArr = {testArr}/>
+                        <BarChart 
+                            title = {algoName !== '' ? algoName : 'data'}
+                            labels = {labels} 
+                            values = {testArr}
+                        />
+                    //    <LargeTable testArr = {testArr}/>
                     //     <ChartDataSet testArr = {testArr}/> 
 
 
                 }
             </Segment>    
-            <MyChart />    
+           
         </Segment>
     );
 }
