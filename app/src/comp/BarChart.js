@@ -6,7 +6,7 @@ const BarChart = ({title, labels, values}) => {
     return (
         <Chart labels = {labels} type = 'bar'>
             <Dataset title = {title} values = {values} backgroundColor = 'lightblue'/>
-            </Chart>
+        </Chart>
 
     )
 
